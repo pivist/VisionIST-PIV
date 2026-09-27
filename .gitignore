@@ -14,6 +14,8 @@
 !images/yolo/test/car.jpg
 !images/opencv_box/test/00.jpg
 !images/opencv_box/test/01.jpg
+!images/features_box/test/00.jpg
+!images/features_box/test/01.jpg
 !images/tapnext_tracker/test/apple.mp4
 !images/moge_box/test/test.jpg
 !images/unimatch/test/flow_0.jpg

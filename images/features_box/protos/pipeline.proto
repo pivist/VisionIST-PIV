@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package pipeline;
+
+// Repeated wrappers
+message FloatList {repeated float values = 1;}
+message StringList { repeated string values = 1;}
+message BytesList {repeated bytes values = 1;}
+
+message Value {
+  oneof kind { 
+    // Scalars
+    bytes b       = 1;
+    string s      = 2;
+    float f       = 5;
+
+    // Repeated values
+    BytesList bb  = 6;
+    StringList ss = 7;
+    FloatList ff  = 10;
+  }
+}
+
+// Universal envelope
+message Envelope {
+  string config_json = 1;                
+  map<string, Value> data = 2;      
+}
+
+// Universal service interface
+service PipelineService {
+  rpc Process(Envelope) returns (Envelope);
+}
