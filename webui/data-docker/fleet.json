@@ -143,6 +143,15 @@
         "reflection": true,
         "reachable": true
       }
+    },
+    {
+      "id": "features",
+      "name": "features",
+      "addr": "features:8061",
+      "def_id": "features",
+      "note": "SIFT keypoints (.mat-compatible)",
+      "added": 1790263679.778584,
+      "last_probe": null
     }
   ]
 }
