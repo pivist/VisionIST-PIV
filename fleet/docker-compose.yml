@@ -1,4 +1,4 @@
-name: visionist-fleet
+fname: visionist-fleet
 
 # Local-build fleet: every service is built from its box's own directory
 # (../images/<box> using docker/Dockerfile) and run under a local tag — no

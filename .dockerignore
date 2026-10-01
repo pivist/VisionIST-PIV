@@ -1,7 +1,10 @@
 # Trim the build context for the webui image (compose build context = repo root).
 # Keep exactly what the image copies:
 #   visionist_client/{pyproject.toml,README.md,LICENSE,src}
-#   webui/{pyproject.toml,README.md,src,boxes,web/dist}
+#   webui/{pyproject.toml,README.md,src,boxes}
+#   webui/web/  — the SPA SOURCES: the image builds the front-end itself
+#                 (webui/Dockerfile's `spa` stage), so node_modules and any
+#                 local dist/ are skipped but the sources are needed.
 
 # VCS + local artifacts
 .git/
@@ -18,11 +21,11 @@ fleet/.venv/
 .venv-decode/
 .venv-nb/
 
-# webui: only the PREBUILT SPA + package are needed (skip build sources & state)
+# webui: the SPA is built in-image, so its sources stay in the context —
+# only the installed packages, a local build and stray state are skipped.
 webui/web/node_modules/
-webui/web/src/
+webui/web/dist/
 webui/web/*.map
-webui/web/package-lock.json
 webui/tests/
 webui/data/
 webui/data-docker/

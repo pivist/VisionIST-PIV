@@ -9,15 +9,40 @@
 #   docker build -f webui/Dockerfile -t visionist-local/webui .
 #   # or, via compose:  cd fleet && docker compose build webui
 #
-# Prerequisite: the built SPA must exist at webui/web/dist. If it's missing,
-# build it first:
-#   (cd webui/web && npm ci && npm run build)
+# No prerequisites: the SPA is built inside the image (the `spa` stage below),
+# so a fresh clone builds as-is — `webui/web/dist` is gitignored and is NOT
+# expected in the context.  For local front-end work you can still run
+# `(cd webui/web && npm ci && npm run build)`; the image ignores that output
+# and always builds its own.
 #
 # Notes:
 #   - webui is installed *editable* on purpose: app.py resolves webui/web/dist
 #     relative to this source tree, so the SPA stays correctly located.
 #   - No GPU needed here: the webui is a thin CPU front-end over the boxes.
 
+
+# ----------------------------------------------------------------------------
+# Stage 1 — build the SPA (React + Vite + TypeScript)
+# ----------------------------------------------------------------------------
+FROM node:20-slim AS spa
+
+WORKDIR /app
+
+# Lockfile first: `npm ci` is reproducible and this layer caches until the
+# dependency set actually changes.
+COPY webui/web/package.json webui/web/package-lock.json ./
+RUN npm ci --no-audit --no-fund
+
+# Sources (node_modules and build junk stay out via the repo-root .dockerignore)
+COPY webui/web/ ./
+
+# `npm run build` = `tsc --noEmit && vite build` -> /app/dist
+RUN npm run build
+
+
+# ----------------------------------------------------------------------------
+# Stage 2 — the runtime image
+# ----------------------------------------------------------------------------
 FROM python:3.11-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -29,8 +54,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /opt
 
-# Only what the app needs at runtime (skip node_modules, the SPAs' build
-# sources, tests, and build junk — see the repo-root .dockerignore).
+# Only what the app needs at runtime (skip node_modules, tests, and build
+# junk — see the repo-root .dockerignore).
 COPY visionist_client/pyproject.toml      visionist_client/
 COPY visionist_client/README.md           visionist_client/
 COPY visionist_client/LICENSE             visionist_client/
@@ -39,7 +64,7 @@ COPY webui/pyproject.toml                 webui/
 COPY webui/README.md                      webui/
 COPY webui/src/                           webui/src/
 COPY webui/boxes/                         webui/boxes/
-COPY webui/web/dist/                      webui/web/dist/
+COPY --from=spa /app/dist/                webui/web/dist/
 
 # Install the local client (satisfies webui's visionist-client dep, and keeps
 # the exact same gRPC stubs as the local wheel), then the webui.
