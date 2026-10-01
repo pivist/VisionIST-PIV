@@ -1,4 +1,4 @@
-name: visionist-fleet
+fname: visionist-fleet
 
 # Local-build fleet: every service is built from its box's own directory
 # (../images/<box> using docker/Dockerfile) and run under a local tag — no
@@ -12,7 +12,7 @@ name: visionist-fleet
 #   python hello.py                   # reach every box with one generic pattern
 #   docker compose down
 #
-# All 8 boxes listen on 8061 internally; we map to host ports 9061–9068.
+# Every box listens on 8061 internally; we map them to host ports 9061–9071.
 # GPU: each service reserves all nvidia devices. For a CPU-only host, drop the
 # `<<: *gpu` merge from every service.
 
@@ -122,6 +122,16 @@ services:
     environment: [ PORT=8061 ]
     restart: unless-stopped
 
+  # features — SIFT keypoint extraction (port of the pivist/features CLI).
+  # Pure CPU: no `<<: *gpu` merge, nothing to reserve.
+  features:
+    build: { context: ../images/features_box,  dockerfile: docker/Dockerfile }
+    image: visionist-local/features
+    container_name: visionist-features
+    ports: ["9071:8061"]
+    environment: [ PORT=8061 ]
+    restart: unless-stopped
+
   # =========================================================================
   # visionist-webui — the browser front-end over the boxes (SPA at / + /api/*)
   # Runs on the same compose network, so it reaches boxes by SERVICE NAME on
@@ -147,6 +157,7 @@ services:
       - moge
       - yolo
       - unimatch
+      - features
     restart: unless-stopped
     labels:
       # ---- DockTail: advertise this container as a Tailscale service --------

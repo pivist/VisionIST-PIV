@@ -16,7 +16,7 @@ def reg():
 
 
 EXPECTED_IDS = {"clip", "tapnext", "lang_sam", "sbert", "vggt", "moge", "yolo",
-                "unimatch"}
+                "unimatch", "features"}
 
 
 def test_out_of_scope_boxes_are_absent(reg):

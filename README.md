@@ -83,6 +83,7 @@ docker run --rm --gpus all -p 8061:8061 -e PORT=8061 --ipc=host my_lang_segm
 | yolo | GPU / CPU | Object detection **+ tracking** (YOLOv8n via ultralytics) on images and videos — per-session track ids (multi-session, like tapnext) |
 | lightglue_box | GPU / CPU | Feature matching with LightGlue — SuperPoint/DISK features per image; for pairs, the matcher's `matches` (+ `confidence`) |
 | opencv_box | GPU / CPU | Feature extraction & matching (SIFT / ORB / LightGlue) |
+| features_box | CPU | SIFT keypoints in the SIFT-Extractor layout — `(2 + 128, N)` array, annotated JPEGs, MATLAB `.mat` |
 | moge_box | GPU | MoGe-3 monocular 3D geometry (depth / points / normals) — CUDA-only |
 
 **The per-box README is the authoritative source for that box's request shape**

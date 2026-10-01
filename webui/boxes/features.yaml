@@ -1,0 +1,94 @@
+# features box — SIFT keypoint extraction (port of the pivist/features CLI).
+# Authoritative request shape: ../../images/features_box/README.md
+id: features
+name: "features · SIFT keypoints (.mat-compatible)"
+box_key: features
+input_mosaic: false   # redundant: the annotated result IS the input (with dots)
+docs: ../../images/features_box/README.md
+note: >
+  A gRPC port of the "SIFT Extractor" command-line tool: same detector,
+  same output layout. Send one or more images and the box answers with
+  the red-dot annotated frames plus `keypoints`, a
+  (num_images, 2 + 128, N) array — row 0 is x, row 1 is y, rows 2..129
+  are the SIFT descriptor — zero-padded to the widest image, with the
+  true per-image N in `counts`. Turn on `mat` to also get the original
+  tool's MATLAB files (one `.mat` per image, key `kp`) to download.
+  Pure CPU, stateless: no GPU, no session.
+
+inputs:
+  - field: images
+    widget: image_upload
+    kind: bb
+    multiple: true
+    required: true
+    helper: >
+      one or more image files (jpg/png/bmp/tiff) — each is extracted
+      independently.
+  - field: names
+    widget: tags
+    kind: ss
+    multiple: true
+    required: false
+    constraint: "one name per image, in order (or leave empty)"
+    placeholder: "original file names, e.g. 00.jpg — they name the .mat artifacts"
+
+command:
+  values: [extract, reset]
+  default: extract
+
+parameters:
+  - key: nfeatures
+    widget: number
+    default: 0
+    placeholder: "cap on keypoints per image (0 = keep every one SIFT finds)"
+  - key: contrast_threshold
+    widget: slider
+    min: 0.0
+    max: 0.2
+    step: 0.005
+    default: 0.04
+    placeholder: "higher = fewer, stronger keypoints (cv2.SIFT_create default 0.04)"
+  - key: edge_threshold
+    widget: number
+    default: 10
+    placeholder: "edge rejection; lower = more edge-like keypoints dropped"
+  - key: n_octave_layers
+    widget: number
+    default: 3
+    placeholder: "scale-space layers per octave"
+  - key: sigma
+    widget: number
+    default: 1.6
+    placeholder: "gaussian sigma at octave 0"
+  - key: draw
+    widget: select
+    values: ["true", "false"]
+    default: "true"
+    placeholder: "true = also return the red-dot annotated JPEGs"
+  - key: radius
+    widget: number
+    default: 2
+    placeholder: "annotation dot radius, in pixels"
+  - key: mat
+    widget: select
+    values: ["false", "true"]
+    default: "false"
+    placeholder: "true = also return one MATLAB .mat per image (key 'kp')"
+
+results:
+  - field: annotated
+    visualizer: image_grid
+    caption: "annotated frames (one red dot per SIFT keypoint)"
+  - field: keypoints
+    visualizer: tensor
+    caption: "keypoints (num_images, 2 + 128, N): rows 0–1 = x,y · rows 2–129 = descriptor"
+  - field: counts
+    visualizer: tensor
+    caption: "true keypoint count per image (the rest of N is zero padding)"
+  - field: mat
+    visualizer: download
+    caption: "download: one MATLAB .mat per image (key 'kp'), when parameters.mat is on"
+    params:
+      filename: "features.mat"
+  - field: "*"
+    visualizer: json
