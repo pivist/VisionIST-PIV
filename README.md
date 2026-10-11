@@ -1,6 +1,11 @@
-# VisionIST: A Plain-Language Guide
+# VisionIST: Quick Description about how it works
 
-Oct 11, 2026 · @Someone
+Please visit and clone the main repositories for VisionIST
+- The Client [https://github.com/sipg-isr/VisionIST](https://github.com/sipg-isr/VisionIST)
+- The Boxes [VisionIST_Library - https://github.com/sipg-isr/VisionIST\_Library ](https://github.com/sipg-isr/VisionIST_Library)
+- A Matlab Client [https://github.com/sipg-isr/VisionIST\_matlab ](https://github.com/sipg-isr/VisionIST_matlab)
+
+Some "boxes" are running already. Instructions in your account on [PIV HUB](http://pivhub.sipg.tecnico.ulisboa.pt)
 
 ## What VisionIST is
 
