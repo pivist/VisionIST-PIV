@@ -1,9 +1,0 @@
-grpcio
-protobuf
-grpcio-reflection
-grpcio-status
-numpy
-opencv-python-headless
-torch>=2.0.0
-torchvision
-kornia>=0.6.11

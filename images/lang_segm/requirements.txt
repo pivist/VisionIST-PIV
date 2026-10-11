@@ -1,5 +1,0 @@
-grpcio
-protobuf
-grpcio-reflection
-grpcio-status
-zstandard
