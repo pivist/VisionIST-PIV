@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 318" width="760" height="318" role="img" aria-label="The call is the same; only the address changes" font-family="Inter, DejaVu Sans, sans-serif" font-size="13">
+  <defs>
+    <marker id="samecall-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#c3c2b7"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="760" height="318" fill="#ffffff"/>
+
+  <text x="24" y="28" font-size="15" font-weight="600" fill="#0b0b0b">The call is the same; only the address changes</text>
+
+  <g fill="none" stroke="#c3c2b7" stroke-width="1.25">
+    <path d="M244 160H352V110H460" marker-end="url(#samecall-arrow)"/>
+    <path d="M244 186H460" marker-end="url(#samecall-arrow)"/>
+    <path d="M244 212H352V262H460" marker-end="url(#samecall-arrow)"/>
+  </g>
+
+  <g>
+    <rect x="24" y="136" width="220" height="100" rx="8" fill="#e5effa" stroke="#2a78d6" stroke-width="2"/>
+    <text x="134" y="166" text-anchor="middle" font-size="15" font-weight="600" fill="#0b0b0b">Your computer</text>
+    <text x="134" y="190" text-anchor="middle" font-size="11.5" fill="#52514e">the client, one pip install</text>
+    <text x="134" y="210" text-anchor="middle" font-size="11.5" fill="#52514e">Visionist('address:port')</text>
+  </g>
+
+  <g>
+    <rect x="460" y="82" width="276" height="56" rx="8" fill="none" stroke="#c3c2b7" stroke-width="1.25"/>
+    <text x="476" y="106" font-weight="600" fill="#0b0b0b">1 · Boxes on a lab server</text>
+    <text x="476" y="124" font-size="11.5" fill="#52514e">10.0.0.5:9065 — nothing to install</text>
+  </g>
+
+  <g>
+    <rect x="460" y="158" width="276" height="56" rx="8" fill="none" stroke="#c3c2b7" stroke-width="1.25"/>
+    <text x="476" y="182" font-weight="600" fill="#0b0b0b">2 · Docker Hub boxes, your laptop</text>
+    <text x="476" y="200" font-size="11.5" fill="#52514e">docker run sipgisr/visionist-opencv</text>
+  </g>
+
+  <g>
+    <rect x="460" y="238" width="276" height="56" rx="8" fill="none" stroke="#c3c2b7" stroke-width="1.25"/>
+    <text x="476" y="262" font-weight="600" fill="#0b0b0b">3 · A box you made yourself</text>
+    <text x="476" y="280" font-size="11.5" fill="#52514e">localhost:8061 — from the template</text>
+  </g>
+</svg>
