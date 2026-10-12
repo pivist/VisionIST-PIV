@@ -144,6 +144,8 @@ At this point the box is yours alone, living on your machine. Nobody else can se
 
 Publishing means two things happen: your box's description joins the shared registry on GitHub, and its ready-made image appears on Docker Hub under `sipgisr`. You do not upload the image yourself — that is automatic once your work is accepted.
 
+You may want to discuss with the faculty before going through the steps below. 
+
 ### Step 1 — run the checks
 
 From the top of your `VisionIST_Library` copy:
