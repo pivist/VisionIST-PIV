@@ -16,7 +16,7 @@ Every box answers requests the same way, so you never learn a second interface. 
 
 For now there are 15 boxes "ready made". They are listed, with what each one does, in the [https://github.com/sipg-isr/VisionIST\_Library ](https://github.com/sipg-isr/VisionIST_Library) registry. However you are free to build your own boxes and create your own repository. To benefit all from a collective effort if you contribute with one box please register it as explained in the VisionIST_Library repo.
 
-&#91;embedded content: how the client reaches a box · 3 situations\]
+![Three ways of running boxes](docs/visionist_client_addresses.svg)
 
 The three situations below are the same call with a different address in it.
 
