@@ -3,7 +3,7 @@
 This is a quick reference for VisionIST and how you can use it in PIV. To get to know what VisionIST is visit the main repositories:
 
 - The Client [https://github.com/sipg-isr/VisionIST](https://github.com/sipg-isr/VisionIST)
-- The Boxes [VisionIST_Library - https://github.com/sipg-isr/VisionIST\_Library ](https://github.com/sipg-isr/VisionIST_Library)
+- The Boxes [https://github.com/sipg-isr/VisionIST\_Library ](https://github.com/sipg-isr/VisionIST_Library)
 - A Matlab Client [https://github.com/sipg-isr/VisionIST\_matlab ](https://github.com/sipg-isr/VisionIST_matlab)
 
 Some "boxes" are running already. Instructions in your account on [PIV HUB](http://pivhub.sipg.tecnico.ulisboa.pt)
