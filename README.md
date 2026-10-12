@@ -1,6 +1,6 @@
 # VisionIST: Quick Description about how it works
 
-This is a quick reference for VisionIST and how you can use it in PIV. To get to know what VisionIST is visit the main repositories:
+This is a quick reference for VisionIST and how you can use it in PIV. To get to know the intrinsics of VisionIST system, visit the main repositories:
 
 - The Client [https://github.com/sipg-isr/VisionIST](https://github.com/sipg-isr/VisionIST)
 - The Boxes [https://github.com/sipg-isr/VisionIST\_Library ](https://github.com/sipg-isr/VisionIST_Library)
