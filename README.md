@@ -63,7 +63,7 @@ Three things to know:
 
 ## 2. Running the published boxes on your own computer
 
-The boxes are published ready-made on Docker Hub under the user **`sipgisr`**. You never build them; you download them and start them.
+The boxes are published ready-made on Docker Hub under the user **`sipgisr`**. You never build them; you download them and start them. The list of available boxes on [Docker Hub](https://hub.docker.com/search?q=sipgisr&sort=updated_at&order=desc). 
 
 ### One box
 In the console type
@@ -89,6 +89,8 @@ docker compose up -d
 ```
 
 Use `--all` instead of `--boxes ...` for everything, and add `--gpu` if you have a graphics card. This also starts the browser console at `http://localhost:8080`.
+
+**Docker is disk and memory-hungry. Only do this if you have enough resources (check the size of docker images before you run them)**
 
 ### How the client sees it
 
