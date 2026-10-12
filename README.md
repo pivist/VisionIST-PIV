@@ -29,9 +29,7 @@ If someone else runs the boxes for you, one command is the whole installation.
 2. **The client.**
 
    ```bash
-   git clone https://github.com/sipg-isr/VisionIST.git
-   cd VisionIST
-   pip install -e visionist-client
+   pip install  visionist-client
    ```
 3. **Docker Desktop** — only if you want to run boxes on your own machine (sections 2, 3 and 4). Download it from [docker.com](https://www.docker.com/products/docker-desktop/) and leave it running in the background.
 4. **A graphics card** — optional. Several boxes are happy on an ordinary laptop; the heavier ones want an NVIDIA GPU. Each box says which it needs in the fleet table.
