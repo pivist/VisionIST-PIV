@@ -9,13 +9,12 @@ Some "boxes" are running already. Instructions in your account on [PIV HUB](http
 
 ## What VisionIST is
 
-VisionIST is a set of computer-vision tools, each packaged as its own self-contained program called a **box**. One box detects objects in a photo, another matches two photos to each other, another estimates depth. A box does one job and nothing else.
+VisionIST is a set of computer-vision tools, each packaged as its own self-contained program called a **box**. One box detects objects in a photo, another matches two photos to each other, another estimates depth. Of course a box can be arbitrarily complex, obviously not constrained to computer vision only. In a nutshell a box does one job and nothing else and runs in a distributed way.
 
 Every box answers requests the same way, so you never learn a second interface. You send it some data — images, text, numbers — together with a short note saying what you want done, and it sends results back. The thing that sends that request is the **client**: a small Python package called `visionist-client`.
 
-A box is simply a program listening at an address, so it makes no difference whether it runs on a lab server down the corridor or inside your own laptop. The call is identical; only the address changes. That one idea covers everything below.
 
-There are 15 boxes today. They are listed, with what each one does, in the [https://github.com/sipg-isr/VisionIST\_Library ](https://github.com/sipg-isr/VisionIST_Library) registry.
+For now there are 15 boxes "ready made". They are listed, with what each one does, in the [https://github.com/sipg-isr/VisionIST\_Library ](https://github.com/sipg-isr/VisionIST_Library) registry. However you are free to build your own boxes and create your own repository. To benefit all from a collective effort if you contribute with one box please register it as explained in the VisionIST_Library repo.
 
 &#91;embedded content: how the client reaches a box · 3 situations\]
 
