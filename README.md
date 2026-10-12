@@ -37,7 +37,7 @@ If someone else runs the boxes for you, one command is the whole installation.
 
 That is all. There is no account to create, no server to register with, and nothing to configure.
 
-## 1. The boxes run on someone else's server
+## 1. The boxes run on someone else's server (ex. in PIVHUB server)
 
 You need two things: the server's address and the box's port number. Nothing is installed on your side beyond the client.
 
