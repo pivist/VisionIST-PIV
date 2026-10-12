@@ -61,16 +61,14 @@ Three things to know:
 - **The word in `config` is the box's name.** It tells the box which instructions are meant for it. Each box's README gives the exact words it understands — `command`, and whatever `parameters` it accepts.
 - **Your images never touch disk on the server.** They travel with the request and the answer comes straight back.
 
-If your group also runs the browser console, you can skip Python entirely: open `http://<server>:8080`, pick a box from the menu, drag in an image and press run. It is the same boxes, with forms instead of code.
-
 ## 2. Running the published boxes on your own computer
 
 The boxes are published ready-made on Docker Hub under the user **`sipgisr`**. You never build them; you download them and start them.
 
 ### One box
-
+In the console type
 ```bash
-docker run --rm -p 9065:8061 -e PORT=8061 sipgisr/visionist-opencv
+docker run --name opencv --rm -p 9065:8061 -e PORT=8061 sipgisr/visionist-opencv
 ```
 
 That downloads the box the first time and starts it. `-p 9065:8061` means *"let me reach it on my port 9065"* — 9065 is the number the registry assigned to `opencv`, so using it keeps your code the same whether the box is local or remote. Add `--gpus all` if the box wants a graphics card and you have one.
